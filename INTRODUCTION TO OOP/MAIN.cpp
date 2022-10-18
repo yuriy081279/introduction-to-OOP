@@ -14,6 +14,10 @@ public:
 	{
 		return x;
 	}
+	double GetY()
+	{
+		return y;
+	}
 	void SetX(double valueX)
 	{
 		x = valueX;
