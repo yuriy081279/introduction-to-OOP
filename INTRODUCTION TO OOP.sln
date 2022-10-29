@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DISTANCE", "DISTANCE\DISTAN
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DISTANCE 2", "DISTANCE 2\DISTANCE 2.vcxproj", "{294EE42E-A5FB-405F-A6E5-25CCF24C24DD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FRACTION", "FRACTION\FRACTION.vcxproj", "{DFBA215D-6E8E-42B9-978B-A6B10C875792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{294EE42E-A5FB-405F-A6E5-25CCF24C24DD}.Release|x64.Build.0 = Release|x64
 		{294EE42E-A5FB-405F-A6E5-25CCF24C24DD}.Release|x86.ActiveCfg = Release|Win32
 		{294EE42E-A5FB-405F-A6E5-25CCF24C24DD}.Release|x86.Build.0 = Release|Win32
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Debug|x64.ActiveCfg = Debug|x64
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Debug|x64.Build.0 = Debug|x64
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Debug|x86.ActiveCfg = Debug|Win32
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Debug|x86.Build.0 = Debug|Win32
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Release|x64.ActiveCfg = Release|x64
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Release|x64.Build.0 = Release|x64
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Release|x86.ActiveCfg = Release|Win32
+		{DFBA215D-6E8E-42B9-978B-A6B10C875792}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
