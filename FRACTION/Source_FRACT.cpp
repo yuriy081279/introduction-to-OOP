@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 using namespace std;
 #define tab "\t"
 #define delim "--------------------------------------"
@@ -73,13 +73,13 @@ public:
 		this;
 	}
 
-	Fraction& to_improper()//ïåðåâîä öåëîé ÷àñòè â äðîáíóþ
+	Fraction& to_improper()//Ð¿ÐµÑ€ÐµÐ²Ð¾Ð´ Ñ†ÐµÐ»Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸ Ð² Ð´Ñ€Ð¾Ð±Ð½ÑƒÑŽ
 	{
 		numerator += integer * denominator;
 		integer = 0;
 		return *this;
 	}
-	Fraction& to_proper()//ïåðåâîä öåëîé ÷àñòè â äðîáíóþ
+	Fraction& to_proper()//Ð¿ÐµÑ€ÐµÐ²Ð¾Ð´ Ñ†ÐµÐ»Ð¾Ð¹ Ñ‡Ð°ÑÑ‚Ð¸ Ð² Ð´Ñ€Ð¾Ð±Ð½ÑƒÑŽ
 	{		
 		integer = numerator/denominator;
 		numerator %= denominator;
@@ -143,15 +143,15 @@ public:
 	/*Fraction& operator>>(const Fraction& obj)
 	{
 		int a, b, c;
-		cout << "Ââåäèòå öåëîå ÷èñëî äðîáè ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð´Ñ€Ð¾Ð±Ð¸ ";
 		cin >> a;
 		obj.Get_integer();
 		cout << endl;
-		cout << "Ââåäèòå ÷èñëèòåëü äðîáè ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ ";
 		cin >> b;
 		obj.Get_numerator();
 		cout << endl;
-		cout << "Ââåäèòå çíàìåíàòåëü ÷èñëî äðîáè ";
+		cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ð¼ÐµÐ½Ð°Ñ‚ÐµÐ»ÑŒ Ñ‡Ð¸ÑÐ»Ð¾ Ð´Ñ€Ð¾Ð±Ð¸ ";
 		cin >> c;
 		obj.Get_denominator();
 		cout << endl;
@@ -183,21 +183,21 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 istream& operator>>(istream& h,  Fraction& obj)
 {	
 	int a, b, c;
-	cout << "Ââåäèòå öåëîå ÷èñëî äðîáè ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ†ÐµÐ»Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾ Ð´Ñ€Ð¾Ð±Ð¸ ";
 	cin >> a;
 	obj.Set_integer(a);
 	cout << endl;
-	cout << "Ââåäèòå ÷èñëèòåëü äðîáè ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¸Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ ";
 	cin >> b;
 	obj.Set_numerator(b);
 	cout << endl;
-	cout << "Ââåäèòå çíàìåíàòåëü äðîáè ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð·Ð½Ð°Ð¼ÐµÐ½Ð°Ñ‚ÐµÐ»ÑŒ Ð´Ñ€Ð¾Ð±Ð¸ ";
 	cin >> c;
 	obj.Set_denominator(c);
 	cout << endl;	
 	return h;
 }
-//ÎÏÅÐÀÒÎÐÛ ÑÐÀÂÍÅÍÈß
+//ÐžÐŸÐ•Ð ÐÐ¢ÐžÐ Ð« Ð¡Ð ÐÐ’ÐÐ•ÐÐ˜Ð¯
 bool operator==(Fraction left, Fraction right)
 {
 	left.to_improper();
@@ -307,11 +307,11 @@ void main()
 	Fraction B(5, 11);
 	if (A == B)
 	{
-		cout << "äðîáè ðàâíû" << endl;
+		cout << "Ð´Ñ€Ð¾Ð±Ð¸ Ñ€Ð°Ð²Ð½Ñ‹" << endl;
 	}
 	else
 	{
-		cout << "äðîáè íå  ðàâíû" << endl;
+		cout << "Ð´Ñ€Ð¾Ð±Ð¸ Ð½Ðµ  Ñ€Ð°Ð²Ð½Ñ‹" << endl;
 	}*/
 #ifdef COMPARISON_OPERATORS_CHECK
 	cout << (Fraction(1, 2) <= Fraction(5, 9));
@@ -339,7 +339,7 @@ void main()
 	
 #ifdef VVOD_PROSTOY_DROBI_S_KLAVIATURY
 	Fraction A;
-	cout << "Ââåäèòå ïðîñòóþ äðîáü: ";
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ñ€Ð¾ÑÑ‚ÑƒÑŽ Ð´Ñ€Ð¾Ð±ÑŒ: ";
 	cout << endl;
 	cin >> A;
 	cout << A;
