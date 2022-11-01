@@ -70,8 +70,9 @@ public:
 	}
 	~Fraction()
 	{
-
+		this;
 	}
+
 	Fraction& to_improper()//перевод целой части в дробную
 	{
 		numerator += integer * denominator;
@@ -98,10 +99,64 @@ public:
 	{
 		return *this = *this * other;
 	}
-	operator Fraction()const
+	// Type cast operators
+	explicit operator int()const
 	{
-		//int = Fraction();
+		return integer+numerator/denominator;
 	}
+	explicit operator double()const
+	{
+		return integer + (double) numerator / denominator;
+	}
+	Fraction(double decimal)
+	{
+		integer = decimal;
+		decimal = decimal + pow(10, -10);
+		denominator = 1000000000;
+		numerator = (decimal-integer)*denominator;
+		reduce();
+	}
+	Fraction& reduce()
+	{
+		int more, less, ostatok;
+		if (numerator > denominator)
+		{
+			more = numerator;
+			less = denominator;
+		}
+		else
+		{
+			more = denominator;
+			less = numerator;
+		}
+		do
+		{
+			ostatok = more % less;
+			more = less;
+			less = ostatok;
+		} while (ostatok);
+		int NOD = more;
+		numerator = numerator / NOD;
+		denominator = denominator / NOD;
+		return *this;
+	}
+	/*Fraction& operator>>(const Fraction& obj)
+	{
+		int a, b, c;
+		cout << "¬ведите целое число дроби ";
+		cin >> a;
+		obj.Get_integer();
+		cout << endl;
+		cout << "¬ведите числитель дроби ";
+		cin >> b;
+		obj.Get_numerator();
+		cout << endl;
+		cout << "¬ведите знаменатель число дроби ";
+		cin >> c;
+		obj.Get_denominator();
+		cout << endl;
+		return *this;
+	}*/
 };
 Fraction operator*(Fraction left, Fraction right)
 {
@@ -123,8 +178,25 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 	}
 	else if (obj.Get_integer() == 0)os << 0;
 	return os;
-}
 
+}
+istream& operator>>(istream& h,  Fraction& obj)
+{	
+	int a, b, c;
+	cout << "¬ведите целое число дроби ";
+	cin >> a;
+	obj.Set_integer(a);
+	cout << endl;
+	cout << "¬ведите числитель дроби ";
+	cin >> b;
+	obj.Set_numerator(b);
+	cout << endl;
+	cout << "¬ведите знаменатель дроби ";
+	cin >> c;
+	obj.Set_denominator(c);
+	cout << endl;	
+	return h;
+}
 //ќѕ≈–ј“ќ–џ —–ј¬Ќ≈Ќ»я
 bool operator==(Fraction left, Fraction right)
 {
@@ -191,10 +263,15 @@ Fraction operator-(Fraction left, Fraction right)
 	res.Set_denominator(right.Get_denominator() * left.Get_denominator());
 	return res.to_proper();
 }
+
+
+
 //#define	CONSTRUCTORS_CHECK
 //#define	ARITHMETICAL_OPERATORS_CHECK
 //#define	COMPOUND_ASSIGNMENTS_CHECK
 //#define	COMPARISON_OPERATORS_CHECK
+//#define	CONVERSION_FROM_OTHER_TO_CLASS
+#define	VVOD_PROSTOY_DROBI_S_KLAVIATURY
 void main()
 {
 	setlocale(LC_ALL, "");
@@ -238,8 +315,6 @@ void main()
 	}*/
 #ifdef COMPARISON_OPERATORS_CHECK
 	cout << (Fraction(1, 2) <= Fraction(5, 9));
-#endif // COMPARISON_OPERATORS_CHECK
-
 	Fraction A = Fraction(5);
 	cout << A << endl;
 	cout << delim << endl;
@@ -247,8 +322,28 @@ void main()
 	B = (Fraction)8;
 	cout << delim << endl;
 	cout << B;
+#endif // COMPARISON_OPERATORS_CHECK
+	
+#ifdef CONVERSION_FROM_OTHER_TO_CLASS
+	Fraction A(2, 3, 10);
+	int a = (int)A;
+	cout << a << endl;
 
-	Fraction A(2, 3, 4);
-		int a = A;
+	double b = (double)A;
+	cout << b << endl;
 
+	Fraction H = 2.8;
+	cout << H << endl;
+
+#endif // CONVERSION_FROM_OTHER_TO_CLASS
+	
+#ifdef VVOD_PROSTOY_DROBI_S_KLAVIATURY
+	Fraction A;
+	cout << "¬ведите простую дробь: ";
+	cout << endl;
+	cin >> A;
+	cout << A;
+#endif // VVOD
+
+	
 }
