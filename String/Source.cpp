@@ -1,10 +1,10 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 class String
 {
-	size_t size;	//размер строки в Байтах
-	char* str; // указатель на строку динамической памяти
+	size_t size;	//СЂР°Р·РјРµСЂ СЃС‚СЂРѕРєРё РІ Р‘Р°Р№С‚Р°С…
+	char* str; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° СЃС‚СЂРѕРєСѓ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё
 public:
 	const char* get_str()const
 	{
@@ -116,7 +116,7 @@ void main()
 {
 	setlocale(LC_ALL, "");
 #ifdef CONSTRUCTORS_CHECK
-	String str1;	//пустая строка размером 80 Байт
+	String str1;	//РїСѓСЃС‚Р°СЏ СЃС‚СЂРѕРєР° СЂР°Р·РјРµСЂРѕРј 80 Р‘Р°Р№С‚
 	str1.Print();
 	cout << str1 << endl;
 
@@ -139,8 +139,8 @@ void main()
 	String str3 = str1 + str2;
 	cout << str3 << endl;
 
-	/*String str4 = "Пошло все в";
-	String str5 = "Жопу!!";
+	/*String str4 = "РџРѕС€Р»Рѕ РІСЃРµ РІ";
+	String str5 = "Р–РѕРїСѓ!!";
 	String str6 = str4 + str5;
 	cout << str3 << endl;*/
 }
