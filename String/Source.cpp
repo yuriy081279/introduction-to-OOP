@@ -6,6 +6,9 @@ using std::endl;;
 
 #define delimiter "\n-------------------------------------------------\n"
 
+class String;
+String operator+=(const String& other)
+
 class String
 {
 	size_t size;	//размер строки в Байтах
@@ -60,32 +63,8 @@ public:
 		}
 		cout << "CopyConstructor:" << this << endl;
 	}
-	String(String&& other)
-	{
-		this->size = other.size;
-		this->str = other.str;
-		other.size = 0;
-		other.str = nullptr;
-		cout << "MoveConstructor:" << this << endl;
-	}
-	String& operator=(String &&other)
-	{
-		if (this != &other)
-		{
-			delete[] this->str;
-			size = other.size;
-			str = other.str;
-			other.size = 0;
-			other.str = nullptr;
-			for(int i=0; i<size; i++)
-			{
-				this->str[i] = other.str[i];
-			}
-			cout << "MoveAssignment:" << this << endl;
-			return *this;
-			
-		}
-	}
+	
+	
 
 	~String()
 	{
@@ -111,6 +90,35 @@ public:
 		cout << "CopyAssignment:\t" << this << endl;
 		return *this;
 	}	
+	String(String&& other)
+	{
+		this->size = other.size;
+		this->str = other.str;
+		other.size = 0;
+		other.str = nullptr;
+		cout << "MoveConstructor:" << this << endl;
+	}
+	String& operator=(String&& other)
+	{
+		if (this != &other)
+		{
+			delete[] this->str;
+			size = other.size;
+			str = other.str;
+			other.size = 0;
+			other.str = nullptr;
+			cout << "MoveAssignment:" << this << endl;
+		}
+		return *this;
+	}
+	String operator+=(String left, const String right)
+	{
+		String res;
+		res.set_size(left.get_size()) = (res.get_size() + right.get_size());
+
+
+		return res;
+	}
 	void Print()const
 	{
 		cout << "size:\t" << size << endl;
@@ -140,6 +148,8 @@ String operator+(const String left, const String right)
 	//}	
 	return res;
 }
+
+
 //#define CONSTRUCTORS_CHECK
 #define OPERATOR_PLUS_CHECK
 
@@ -168,9 +178,10 @@ void main()
 	cout << delimiter << endl;
 	String str1 = "Hello ";
 	String str2 = "World";
-	String str3 = str1 + str2;
+	/*String str3 = str1 + str2;
 	cout << str3 << endl;
-	cout << delimiter << endl;
+	cout << delimiter << endl;*/
+	str1 += str2;
 	
 
 	/*String str4 = "Пошло все в";
