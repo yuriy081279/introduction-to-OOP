@@ -1,5 +1,10 @@
 ﻿#include<iostream>
 using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;;
+
+#define delimiter "\n-------------------------------------------------\n"
 
 class String
 {
@@ -10,6 +15,11 @@ public:
 	{
 		return str;
 	}
+	char* get_str()
+	{
+		return str;
+	}
+
 	const size_t get_size()const
 	{
 		return size;
@@ -48,8 +58,35 @@ public:
 			this->str[i] = other.str[i];
 			
 		}
-		cout << "CopyConstructor: \t" << this << endl;
+		cout << "CopyConstructor:" << this << endl;
 	}
+	String(String&& other)
+	{
+		this->size = other.size;
+		this->str = other.str;
+		other.size = 0;
+		other.str = nullptr;
+		cout << "MoveConstructor:" << this << endl;
+	}
+	String& operator=(String &&other)
+	{
+		if (this != &other)
+		{
+			delete[] this->str;
+			size = other.size;
+			str = other.str;
+			other.size = 0;
+			other.str = nullptr;
+			for(int i=0; i<size; i++)
+			{
+				this->str[i] = other.str[i];
+			}
+			cout << "MoveAssignment:" << this << endl;
+			return *this;
+			
+		}
+	}
+
 	~String()
 	{
 		delete[] this->str;
@@ -88,25 +125,19 @@ String operator+(const String left, const String right)
 {
 	String res;
 	res.set_size(left.get_size() + right.get_size());
-	char* str = new char[res.get_size()];
-	for (int i = 0; i < res.get_size(); i++)
-	{
-		if (i < left.get_size())
-		{
-			str[i] = left.get_str()[i];
-			cout << str[i];
-		}		
-		if (i == left.get_size())
-		{
-			cout << " ";
-		}				
+	//char* str = new char[res.get_size()];
+	for (int i = 0; i < left.get_size(); i++)
+	{		
+	  res.get_str()[i] = left.get_str()[i];							
 	}
-	for (int j = left.get_size(); j < res.get_size(); j++)
+	for (int i = left.get_size(); i < res.get_size(); i++) // Мой вариант (доработанный)
 	{			
-		str[j] = right.get_str()[j - left.get_size()];
-		cout << str[j];			
+		res.get_str()[i-1] = right.get_str()[i - left.get_size()];				
 	}
-	cout << endl;		
+	//for (int i = 0; i < right.get_size(); i++) // Олег Анатольевич
+	//{
+	//	res.get_str()[i + left.get_size()-1] = right.get_str()[i];
+	//}	
 	return res;
 }
 //#define CONSTRUCTORS_CHECK
@@ -134,10 +165,13 @@ void main()
 	cout << str5 << endl;
 #endif // CONSTRUCTORS_CHECK
 
-	String str1 = "Hello";
+	cout << delimiter << endl;
+	String str1 = "Hello ";
 	String str2 = "World";
 	String str3 = str1 + str2;
 	cout << str3 << endl;
+	cout << delimiter << endl;
+	
 
 	/*String str4 = "Пошло все в";
 	String str5 = "Жопу!!";
