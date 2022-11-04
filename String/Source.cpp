@@ -7,7 +7,7 @@ using std::endl;;
 #define delimiter "\n-------------------------------------------------\n"
 
 class String;
-String operator+=(const String& other)
+//String operator+=(const String& other)
 
 class String
 {
@@ -111,14 +111,14 @@ public:
 		}
 		return *this;
 	}
-	String operator+=(String left, const String right)
+	/*String operator+=(String left, const String right)
 	{
 		String res;
 		res.set_size(left.get_size()) = (res.get_size() + right.get_size());
 
 
 		return res;
-	}
+	}*/
 	void Print()const
 	{
 		cout << "size:\t" << size << endl;
@@ -181,7 +181,7 @@ void main()
 	/*String str3 = str1 + str2;
 	cout << str3 << endl;
 	cout << delimiter << endl;*/
-	str1 += str2;
+	//str1 += str2;
 	
 
 	/*String str4 = "Пошло все в";
