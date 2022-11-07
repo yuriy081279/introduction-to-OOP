@@ -7,7 +7,7 @@ using std::endl;
 #define delimiter "\n-------------------------------------------------\n"
 
 class String;
-String operator + (const String& left, const String& right);
+String operator+ (const String left, const String right);
 
 class String
 {
@@ -120,7 +120,7 @@ public:
 		cout << "str:\t" << str << endl;
 	}
 };
-String operator + (const String left, const String right)
+String operator+ (const String left, const String right)
 {
 	String res;
 	res.set_size(left.get_size() + right.get_size());
