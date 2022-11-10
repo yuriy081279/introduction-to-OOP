@@ -6,8 +6,6 @@ using std::endl;;
 
 #define delimiter "\n-------------------------------------------------\n"
 
-class String;
-//String operator+=(const String& other)
 
 class String
 {
@@ -42,25 +40,25 @@ public:
 		this->str = new char[size] {};
 		cout << "DefConstructor:\t"<<this<<endl;
 	}
-	String(const char str[])
+	String(const char str[]):String(strlen(str)+1)
 	{
-		this->size = strlen(str) + 1;
-		this->str = new char[size] {};
+		//this->size = strlen(str) + 1;
+		//this->str = new char[size] {};
 		for (int i = 0; i < size; i++)
 		{
 			this->str[i] = str[i];
 		}
 		cout << "Construcnor: \t" << endl;
 	}	
-	String(const String& other)
+	String(const String& other):String(other.str)
 	{
-		this->size = other.size;
-		this->str = new char[size]{};
-		for (int i = 0; i < size; i++)
+		//this->size = other.size;
+		//this->str = new char[size]{};
+		/*for (int i = 0; i < size; i++)
 		{
 			this->str[i] = other.str[i];
 			
-		}
+		}*/
 		cout << "CopyConstructor:" << this << endl;
 	}
 	
@@ -178,16 +176,13 @@ void main()
 	cout << delimiter << endl;
 	String str1 = "Hello ";
 	String str2 = "World";
-	/*String str3 = str1 + str2;
+	String str3 = str1 + str2;
 	cout << str3 << endl;
-	cout << delimiter << endl;*/
-	//str1 += str2;
+	cout << delimiter << endl;
+	
 	
 
-	/*String str4 = "Пошло все в";
-	String str5 = "Жопу!!";
-	String str6 = str4 + str5;
-	cout << str3 << endl;*/
+	
 }
 
 
