@@ -35,26 +35,26 @@ public:
 		this-> str = str;
 	}
 
-	explicit String(size_t size=80)
+	explicit String(size_t size=80):size(size), str(new char[size]{})
 	{
-		this->size = size;
-		this->str = new char[size] {};
+		//this->size = size;
+		//this->str = new char[size] {};
 		cout << "DefConstructor:\t"<<this<<endl;
 	}
-	String(const char str[])
+	String(const char str[]):size(strlen(str)+1), str(new char[size]{})
 	{
-		this->size = strlen(str) + 1;
-		this->str = new char[size] {};
+		//this->size = strlen(str) + 1;
+		//this->str = new char[size] {};
 		for (int i = 0; i < size; i++)
 		{
 			this->str[i] = str[i];
 		}
 		cout << "Construcnor: \t" << endl;
 	}	
-	String(const String& other)
+	String(const String& other):size(other.size),str(new char[size]{})
 	{
-		this->size = other.size;
-		this->str = new char[size]{};
+		//this->size = other.size;
+		//this->str = new char[size]{};
 		for (int i = 0; i < size; i++)
 		{
 			this->str[i] = other.str[i];
@@ -63,8 +63,6 @@ public:
 		cout << "CopyConstructor:" << this << endl;
 	}
 	
-	
-
 	~String()
 	{
 		delete[] this->str;
@@ -130,20 +128,20 @@ String operator+(const String left, const String right)
 	{		
 	  res.get_str()[i] = left.get_str()[i];							
 	}
-	for (int i = left.get_size(); i < res.get_size(); i++) // Мой вариант (доработанный)
-	{			
-		res.get_str()[i-1] = right.get_str()[i - left.get_size()];				
-	}
-	//for (int i = 0; i < right.get_size(); i++) // Олег Анатольевич
-	//{
-	//	res.get_str()[i + left.get_size()-1] = right.get_str()[i];
-	//}	
+	//for (int i = left.get_size(); i < res.get_size(); i++) // Мой вариант (доработанный)
+	//{			
+	//	res.get_str()[i-1] = right.get_str()[i - left.get_size()];				
+	//}
+	for (int i = 0; i < right.get_size(); i++) // Олег Анатольевич
+	{
+		res.get_str()[i + left.get_size()-1] = right.get_str()[i];
+	}	
 	return res;
 }
 
 
 //#define CONSTRUCTORS_CHECK
-//#define OPERATOR_PLUS_CHECK
+#define OPERATOR_PLUS_CHECK
 
 void main()
 {
@@ -168,11 +166,14 @@ void main()
 #endif // CONSTRUCTORS_CHECK
 
 	cout << delimiter << endl;
-	String str1 = "Hello ";
+	String str1 = "Hello   ";
 	String str2 = "World";
-	/*String str3 = str1 + str2;
+	String str3 = str1 + str2;
+	//String str4 = str3 + str1;
 	cout << str3 << endl;
-	cout << delimiter << endl;*/
+	cout << delimiter << endl;
+	
+	cout << delimiter << endl;
 	
 	
 
